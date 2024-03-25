@@ -5,14 +5,14 @@ import Algoritmo_con_fuerza_bruta
 archivos_txt = glob.glob('*.txt')
 
 # Ordenar la lista de archivos
-archivos_txt_ordenados = ['Prueba1.txt', 'Prueba2.txt']#, 'Prueba3.txt', 'Prueba4.txt', 'Prueba5.txt', 'Prueba6.txt', 'Prueba7.txt', 'Prueba8.txt', 'Prueba9.txt', 'Prueba10.txt', 
-                        #   'Prueba11.txt', 'Prueba12.txt', 'Prueba13.txt', 'Prueba14.txt', 'Prueba15.txt', 'Prueba16.txt', 'Prueba17.txt', 'Prueba18.txt', 'Prueba19.txt', 'Prueba20.txt', 
-                        #   'Prueba21.txt', 'Prueba22.txt', 'Prueba23.txt', 'Prueba24.txt', 'Prueba25.txt', 'Prueba26.txt', 'Prueba27.txt', 'Prueba28.txt', 'Prueba29.txt', 'Prueba30.txt'] # [sorted(archivos_txt)]
+archivos_txt_ordenados = ['Prueba1.txt', 'Prueba2.txt', 'Prueba3.txt', 'Prueba4.txt', 'Prueba5.txt', 'Prueba6.txt', 'Prueba7.txt', 'Prueba8.txt', 'Prueba9.txt', 'Prueba10.txt', 
+                           'Prueba11.txt', 'Prueba12.txt', 'Prueba13.txt', 'Prueba14.txt', 'Prueba15.txt', 'Prueba16.txt', 'Prueba17.txt', 'Prueba18.txt', 'Prueba19.txt', 'Prueba20.txt', 
+                           'Prueba21.txt', 'Prueba22.txt', 'Prueba23.txt']#, 'Prueba24.txt', 'Prueba25.txt', 'Prueba26.txt', 'Prueba27.txt', 'Prueba28.txt', 'Prueba29.txt', 'Prueba30.txt'] # [sorted(archivos_txt)]
 
 a = 0
 b = []
 
-print("Digite\n1: Para usar fuersa bruta\n2: Para usar programacion dinamica\n3: Para usar programacion voraz")
+print("Digite\n1: Para usar fuerza bruta\n2: Para usar programacion dinamica\n3: Para usar programacion voraz")
 opcion = input("-> ")
 
 if (opcion == 1):
