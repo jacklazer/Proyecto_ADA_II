@@ -13,9 +13,10 @@ a = 0
 b = []
 
 print("Digite\n1: Para usar fuerza bruta\n2: Para usar programacion dinamica\n3: Para usar programacion voraz")
-opcion = input("-> ")
+opcion = int(input("-> "))
 
 if (opcion == 1):
+    print(1)
     for nombre_archivo in archivos_txt_ordenados:
         with open(nombre_archivo, 'r') as archivo:
             print(f"\nSolucion de {nombre_archivo}:")
@@ -31,6 +32,7 @@ if (opcion == 1):
             a = 0
             b = []
 elif (opcion == 2):
+    print(2)
     for nombre_archivo in archivos_txt_ordenados:
         with open(nombre_archivo, 'r') as archivo:
             print(f"\nSolucion de {nombre_archivo}:")
@@ -46,6 +48,7 @@ elif (opcion == 2):
             a = 0
             b = []
 else:
+    print(3)
     for nombre_archivo in archivos_txt_ordenados:
         with open(nombre_archivo, 'r') as archivo:
             print(f"\nSolucion de {nombre_archivo}:")
