@@ -45,17 +45,19 @@ elif (opcion == "2"):
             # Reinicia las listas para la próxima iteración
             a = 0
             b = []
-else:
+elif opcion == "3":
     for nombre_archivo in archivos_txt_ordenados:
         with open(nombre_archivo, 'r') as archivo:
             print(f"\nSolucion de {nombre_archivo}:")
             for linea in archivo:
-                elementos = linea.strip().split(',')  
-                if len(elementos) > 1:  
+                elementos = linea.strip().split(',')  # Divide la línea en elementos separados por comas
+                if len(elementos) > 1:  # Verifica si hay más elementos en la línea
                     b.append([int(e) for e in elementos[0:]])
                 else:
                     a = int(elementos[0])
-            # Utiliza el algoritmo voraz
             Algoritmo_voraz.roV(a, b)
+            # Reinicia las listas para la próxima iteración
             a = 0
             b = []
+else:
+    print("Opción no válida.")

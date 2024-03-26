@@ -1,30 +1,23 @@
 def roV(n, tablones):
-    # Función para calcular la relación entre el tiempo de supervivencia restante y el tiempo de regado
-    def calcular_relacion(tablon):
-        return (tablones[tablon][0] - tablones[tablon][1]) / tablones[tablon][1]
+    # Ordenar los tablones según su prioridad de manera descendente
+    tablones_ordenados = sorted(tablones, key=lambda x: x[2], reverse=True)
 
-    # Inicialización de la lista de tablones no regados
-    tablones_no_regados = list(range(n))
+    # Inicializar variables
+    inicio_riego = [0] * n  # Tiempo de inicio de riego para cada tablón
+    tiempo_riego = 0  # Tiempo de riego actual
 
-    # Inicialización de la lista de programación óptima
-    programacion_optima = []
-
-    # Mientras haya tablones no regados
-    while tablones_no_regados:
-        # Seleccionar el tablón con la menor relación
-        tablon_seleccionado = min(tablones_no_regados, key=calcular_relacion)
-        # Agregar el tablón seleccionado a la programación óptima
-        programacion_optima.append(tablon_seleccionado)
-        # Eliminar el tablón seleccionado de la lista de tablones no regados
-        tablones_no_regados.remove(tablon_seleccionado)
+    # Iterar sobre los tablones ordenados
+    for i in range(n):
+        tablon = tablones_ordenados[i]
+        # Calcular el tiempo de inicio de riego del tablón
+        inicio_riego[tablones.index(tablon)] = tiempo_riego
+        tiempo_riego += tablon[1]  # Sumar el tiempo de riego del tablón actual
 
     # Calcular el costo total de riego
-    costo_total = sum((tablones[i][0] - (programacion_optima.index(i) * tablones[i][1])) if programacion_optima.index(i) * tablones[i][1] < tablones[i][0] else tablones[i][2] * (programacion_optima.index(i) * tablones[i][1] - tablones[i][0]) for i in programacion_optima)
+    costo_total = sum((tablon[0] - inicio_riego[i] - tablon[1]) if (tablon[0] - inicio_riego[i] - tablon[1]) > 0 else tablon[2] * ((inicio_riego[i] + tablon[1]) - tablon[0]) for i, tablon in enumerate(tablones))
 
-    # Imprimir la solución óptima
-    print("Solución óptima:")
-    print("Costo total de riego:", costo_total)
-    for tablon in programacion_optima:
-        print(tablon)
+    # Imprimir resultados
+    print("N. Tablones:", n)
+    print("Valor Solución(costo de riesgo):", costo_total)
 
-
+    return inicio_riego, costo_total
