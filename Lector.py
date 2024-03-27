@@ -1,5 +1,6 @@
 import glob
 import Algoritmo_con_fuerza_bruta
+import Algortimo_voraz
 
 # Obtener la lista de archivos txt en el directorio actual
 archivos_txt = glob.glob('*.txt')
@@ -56,7 +57,7 @@ else:
                     b.append([int(e) for e in elementos[0:]])
                 else:
                     a = int(elementos[0])
-            Algoritmo_con_fuerza_bruta.roFB(a, b)
+            Algortimo_voraz.roV(a, b)
             # Reinicia las listas para la próxima iteración
             a = 0
             b = []
