@@ -1,5 +1,15 @@
 from itertools import permutations
-
+"""
+     Lee los datos de entrada desde un archivo y los devuelve como una tupla.
+    
+     Argumentos:
+     nombre_archivo (str): Nombre del archivo de entrada.
+    
+     Retorna:
+     n (int): Número de tablones.
+     tablones (list): Lista de tuplas (ts, tr, p) que representan el tiempo de siembra, el tiempo de riego y la penalización para cada tablón.
+     Complejidad: O(n), donde n es el número de tablones
+"""
 def leer_archivo(nombre_archivo):
     with open(nombre_archivo, 'r') as archivo:
         lineas = archivo.readlines()
@@ -10,6 +20,19 @@ def leer_archivo(nombre_archivo):
             tablones.append((ts, tr, p))
         return n, tablones
 
+"""
+    Función recursiva que calcula el costo mínimo y la programación óptima de riego para un estado dado.
+    
+    Argumentos:
+    state (tuple): Tupla de índices de tablones que quedan por regar.
+    tablones (list): Lista de tuplas (ts, tr, p) que representan los tablones.
+    dp (dict): Diccionario para almacenar los resultados ya calculados (memoización).
+    
+    Retorna:
+    min_cost (float): Costo mínimo para regar los tablones en el estado dado.
+    optimal_order (list): Lista de índices que representa la programación óptima de riego.
+    Complejidad: O(n * 2^n), donde n es el número de tablones
+"""
 def cost(state, tablones, dp):
     if not state:
         return 0, []
@@ -34,12 +57,27 @@ def cost(state, tablones, dp):
     dp[state] = (min_cost, optimal_order)
     return min_cost, optimal_order
 
+"""
+    Función principal que resuelve el problema de optimización del riego de tablones.
+    
+    Argumentos:
+    nombre_archivo (str): Nombre del archivo de entrada.
+    
+    Retorna:
+    min_cost (float): Costo mínimo para regar todos los tablones.
+    optimal_order (list): Lista de índices que representa la programación óptima de riego.
+
+    # Código para leer los datos de entrada
+    # Llamada a la función cost con el estado inicial
+    # Complejidad: O(n * 2^n), donde n es el número de tablones
+"""
 def solucion_optima(nombre_archivo):
     n, tablones = leer_archivo(nombre_archivo)
     initial_state = tuple(range(n))
     dp = {}
     min_cost, optimal_order = cost(initial_state, tablones, dp)
     return min_cost, optimal_order
+
 
 resultado = solucion_optima('prueba1.txt')
 print(f"Tiempo óptimo de riego: {resultado[0]}")
