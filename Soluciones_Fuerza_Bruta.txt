@@ -1,0 +1,89 @@
+Solucion de Prueba1.txt:
+17
+2
+1
+0
+3
+4
+
+Solucion de Prueba2.txt:
+35
+0
+2
+1
+4
+3
+
+Solucion de Prueba3.txt:
+93
+1
+4
+0
+3
+2
+
+Solucion de Prueba4.txt:
+84
+4
+3
+1
+2
+0
+
+Solucion de Prueba5.txt:
+97
+0
+2
+1
+4
+3
+
+Solucion de Prueba6.txt:
+187
+2
+3
+1
+0
+4
+
+Solucion de Prueba7.txt:
+125
+2
+3
+4
+0
+1
+
+Solucion de Prueba8.txt:
+245
+4
+2
+6
+7
+5
+0
+3
+1
+
+Solucion de Prueba9.txt:
+246
+5
+7
+0
+2
+4
+3
+6
+1
+
+Solucion de Prueba10.txt:
+152
+3
+7
+2
+6
+5
+1
+0
+4
+

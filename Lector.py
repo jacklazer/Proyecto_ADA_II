@@ -16,28 +16,63 @@ print("Digite\n1: Para usar fuerza bruta\n2: Para usar programacion dinamica\n3:
 opcion = int(input("-> "))
 
 if (opcion == 1):
+    soluciones_str = ""
+
     for nombre_archivo in archivos_txt_ordenados:
+        solucion_str = ""
+
         with open(nombre_archivo, 'r') as archivo:
-            print(f"\nSolucion de {nombre_archivo}:")
             lineas = archivo.readlines()
             finca = []
             for linea in lineas[1:]:
                 ts, tr, p = map(int, linea.strip().split(','))
                 finca.append((ts, tr, p))
-            Algoritmo_Fuerza_Bruta.roFB(finca)
-    
-    with open("Soluciones.txt", "w") as archivo_:
-    # Escribe el contenido en el archivo
-        archivo_.write("contenidoxD")
+
+            solucion = Algoritmo_Fuerza_Bruta.roFB(finca)
+
+            solucion_str += "Solucion de " + nombre_archivo + ":\n"
+
+            solucion_str += str(solucion[1]) + "\n"
+
+            for tablon in solucion[0]:
+                solucion_str += str(tablon) + "\n"
+
+            # solucion_str += "\n"
+
+            print(solucion_str)
+            soluciones_str += solucion_str + "\n"
+
+    with open("Soluciones_Fuerza_Bruta.txt", "w") as archivo_:
+        archivo_.write(soluciones_str)
+
 elif (opcion == 2):
+    soluciones_str = ""
+
     for nombre_archivo in archivos_txt_ordenados:
+        solucion_str = ""
+        
         with open(nombre_archivo, 'r') as archivo:
-            print(f"\nSolucion de {nombre_archivo}:")
             lineas = archivo.readlines()
             finca = []
             for linea in lineas[1:]:
                 ts, tr, p = map(int, linea.strip().split(','))
                 finca.append((ts, tr, p))
-            Algoritmo_Dinamico.roPD(finca)
+
+            solucion = Algoritmo_Dinamico.roPD(finca)
+
+            solucion_str += "Solucion de " + nombre_archivo + ":\n"
+
+            solucion_str += str(solucion[1]) + "\n"
+
+            for tablon in solucion[0]:
+                solucion_str += str(tablon) + "\n"
+
+            # solucion_str += "\n"
+
+            print(solucion_str)
+            soluciones_str += solucion_str + "\n"
+                
+    with open("Soluciones_Programacion_Dinamica.txt", "w") as archivo_:
+        archivo_.write(soluciones_str)
 else:
     print("xd")

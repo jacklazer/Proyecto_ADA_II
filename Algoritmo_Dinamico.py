@@ -84,12 +84,16 @@ def roPD(finca):
     dp = {}
     min_cost, optimal_order = cost(initial_state, finca, dp)
 
-    # O(1)
-    print(min_cost)
+    # # O(1)
+    # print(min_cost)
 
-    # O(n) | n = len(optimal_order)
-    for tablon in reversed(optimal_order):
-        print(tablon)
+    # # O(n) | n = len(optimal_order)
+    # for tablon in reversed(optimal_order):
+    #     print(tablon)
+
+    optimal_order.reverse()
+
+    return (optimal_order, min_cost)
 
 
 

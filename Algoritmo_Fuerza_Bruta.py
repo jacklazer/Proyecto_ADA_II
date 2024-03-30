@@ -106,9 +106,11 @@ def roFB(finca):
             programacion_optima = programacion
             costo_optimo = posible_costo_optimo
         
-    # O(1)
-    print(costo_optimo)
+    # # O(1)
+    # print(costo_optimo)
 
-    # O(n) | n = len(programacion_optima)
-    for tablon in programacion_optima:
-        print(tablon)
+    # # O(n) | n = len(programacion_optima)
+    # for tablon in programacion_optima:
+    #     print(tablon)
+
+    return ((programacion_optima, costo_optimo))
