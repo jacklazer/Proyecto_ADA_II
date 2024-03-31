@@ -18,13 +18,90 @@ Grupo 9:
 
 ### Algoritmo_con_fuerza_bruta.py
 
+En este archivo se encuentra la implementación propuesta del algoritmo de fuerza bruta para resolver el problema de optimización de la programación de riego en una finca en cuestion. 
+
+```python
+from itertools import permutations
+```
+Fue necesario importar la función `permutations` del módulo `itertools`. La cual permitirá generar todas las permutaciones posibles de una secuencia.
+
+```python
+def calculador_dtlpp(n):
+    indices = [[i] for i in range(n)]
+...
+```
+La funcion `calculador_dtlpp` se implementó para calcular todas las posibles programaciones de riego para una finca con `n` tablones. Utilizando un efoque de fuerza bruta se genera una lista de listas llamada `indices`, donde cada sublista contiene un solo índice.
+
+Para ello, se utiliza la función auxiliar `identificador_de_elemento`, la cual incluye un bucle for, que verifica si un elemento está presente o no en una lista, y con la función recursiva `combinador_de_elementos` se combinan elementos de una lista parcial de manera que no se repitan los índices.
+
+```python
+def calculador_didtdr(programacion, finca):
+    inicios_de_tiempos_de_riego = [0] * (len(programacion))
+    turno = 0
+...
+```
+La función `calculador_didtdr` esta implementada para calcular los tiempos de inicio de riego para cada tablón en una determinada programación de riego, eniendo en cuenta el tiempo de riego de los tablones anteriores.
+
+para ello Se inicializa una lista `inicios_de_tiempos_de_riego` con una longitud igual a la cantidad de tablones en la `programación`. Esta lista contendrá los tiempos de inicio de riego calculados para cada tablón, que será el retorno de la función. Se itera sobre cada tablón en la programacion utilizando un bucle for, donde se calcula el tiempo de inicio de riego como el tiempo de inicio de riego del tablón anterior más el tiempo de riego del tablón anterior. 
+
+Después de cada iteración, se incrementa el `turno` para pasar al siguiente tablón en la `programación`.
+
+```python
+def calculador_dcdr(inicios_de_tiempos_de_riego, finca):
+    i = 0
+    costo_total = 0
+...
+```
+La función `calculador_dcdr` fue implementada para calcular el costo total de riego para una determinada programación de riego dados los tiempos de inicio de riego de los tablones y la información sobre la finca.
+
+Para ello, y usando un bucle `for`, se itera sobre los tablones de la finca y se calcula el costo de riego para cada tablón, usando un condicional `if` que tiene en cuenta los tiempos de inicio de riego de cada uno.
+Devuelve el costo total de riego para la programación dada.
+
+
+```python
+def roFB(finca):
+    n = len(finca)
+    programaciones_posibles = calculador_dtlpp(n)
+```
+`roFB` es la función principal, la cual esta encargada de encontrar la solución óptima utilizando la programacion con fuerza bruta. 
+
+Para ello, primero calcula todas las posibles programaciones utilizando la función `calculador_dtlpp`.
+
+luego, itera sobre todas las programaciones posibles y calcula el costo de riego para cada una utilizando las funciones `calculador_dcdr` y `calculador_didtdr`.
+
+Dentro de la función `roFB`:
+
+```python
+programacion_optima = programaciones_posibles[0]
+costo_optimo = calculador_dcdr(calculador_didtdr(programacion_optima, finca), finca)
+```
+Inicializa la primera programación como la óptima y calcula su costo.
+
+```python
+for programacion in programaciones_posibles:
+    posible_costo_optimo = calculador_dcdr(calculador_didtdr(programacion, finca), finca)
+    if (posible_costo_optimo < costo_optimo):
+        programacion_optima = programacion
+        costo_optimo = posible_costo_optimo
+```
+Luego, usando un bucle `for`, se itera sobre todas las posibles programaciones y se calcula el costo de cada una. Luego, utilizando una estrucutura condicional, si se encuentra una programación con un costo menor, se actualiza la programación óptima y el costo óptimo.
+
+Por ultimo, la función retorna una tupla que contiene la programación óptima y su costo.
 
 
 ### Algoritmo_Dinamico.py
 
+En este archivo se encuentra la implementación propuesta del algoritmo de programación dinamica para resolver el problema de optimización de la programación de riego en una finca en cuestion. 
+
+
+
+
+
+
 
 ### Algoritmo_voraz.py
 
+En este archivo se encuentra la implementación propuesta del algoritmo de programación voraz para resolver el problema de optimización de la programación de riego en una finca en cuestion. 
 
 ### Lector.py
 
@@ -53,6 +130,23 @@ Si el usuario elige la opción 2 (programación dinámica) o a opcion 3 (program
 
 ### pruebas en formato .txt
 
+Se entrega un conjunto de archivos de texto que representan una serie de pruebas con las que se van a ejecutar los algoritmos implementados una vez ejecutada la aplicación y elegido el algoritmo a utilizar. 
+
+Estos archivos de prueba representan los argumentos de entrada para los algoritmos que se implementaron y con los cuales se generarán las soluciones a los diferentes de escenarios de prueba del problema de optimización de la programación de riego para una finca y que luego serán mostrados por consola y en archivos de texto por algoritmo.
+
+Cada uno de los archivos de texto tendrán un formato de `n + 1` lıneas así:
+
+```
+n
+ts0,tr0,p0
+ts1,tr1,p1
+.
+.
+.
+ts(n-1),tr(n-1),p(n-1)
+```
+
+En donde, la primera linea representa el numero de tablones de la finca y las siguientes `n` lıneas corresponden a los `ts = tiempos de supervivencia`, `tr = tiempos de regado` y `p = prioridades` de cada uno de los `n` tablones, uno por linea.
 
 
 ## Instrucciones para la ejecución de la aplicación
