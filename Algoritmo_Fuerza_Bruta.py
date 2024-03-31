@@ -100,6 +100,7 @@ def roFB(finca):
     for programacion in programaciones_posibles:
         # O(2n) = O(n) | n = len(programacion) = calculador_didtdr(programacion, finca)
         posible_costo_optimo = calculador_dcdr(calculador_didtdr(programacion, finca), finca)
+        # print(posible_costo_optimo, programacion)
 
         # O(1)
         if (posible_costo_optimo < costo_optimo):

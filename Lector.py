@@ -1,6 +1,8 @@
 import glob
 import Algoritmo_Fuerza_Bruta
 import Algoritmo_Dinamico
+import Algoritmo_Voraz_JuanC_1
+import Algoritmo_Voraz_JuanC_2
 
 # Obtener la lista de archivos txt en el directorio actual
 archivos_txt = glob.glob('*.txt')
@@ -75,4 +77,32 @@ elif (opcion == 2):
     with open("Soluciones_Programacion_Dinamica.txt", "w") as archivo_:
         archivo_.write(soluciones_str)
 else:
-    print("xd")
+    soluciones_str = ""
+
+    for nombre_archivo in archivos_txt_ordenados:
+        solucion_str = ""
+        
+        with open(nombre_archivo, 'r') as archivo:
+            lineas = archivo.readlines()
+            finca = []
+            for linea in lineas[1:]:
+                ts, tr, p = map(int, linea.strip().split(','))
+                finca.append((ts, tr, p))
+
+            solucion = Algoritmo_Voraz_JuanC_2.roV(finca)
+
+            solucion_str += "Solucion de " + nombre_archivo + ":\n"
+
+            solucion_str += str(solucion[1]) + "\n"
+
+            for tablon in solucion[0]:
+                solucion_str += str(tablon) + "\n"
+
+            # solucion_str += "\n"
+
+            print(solucion_str)
+            soluciones_str += solucion_str + "\n"
+                
+    with open("Soluciones_Algoritmo_Voraz_JuanC.txt", "w") as archivo_:
+        archivo_.write(soluciones_str)
+        
