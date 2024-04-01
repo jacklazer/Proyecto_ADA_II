@@ -21,11 +21,6 @@ Grupo 9:
 En este archivo se encuentra la implementación propuesta del algoritmo de fuerza bruta para resolver el problema de optimización de la programación de riego en una finca en cuestion. 
 
 ```python
-from itertools import permutations
-```
-Fue necesario importar la función `permutations` del módulo `itertools`. La cual permitirá generar todas las permutaciones posibles de una secuencia.
-
-```python
 def calculador_dtlpp(n):
     indices = [[i] for i in range(n)]
 ...
@@ -47,7 +42,7 @@ para ello Se inicializa una lista `inicios_de_tiempos_de_riego` con una longitud
 Después de cada iteración, se incrementa el `turno` para pasar al siguiente tablón en la `programación`.
 
 ```python
-def calculador_dcdr(inicios_de_tiempos_de_riego, finca):
+def calculador_dctdr(inicios_de_tiempos_de_riego, finca):
     i = 0
     costo_total = 0
 ...
@@ -153,4 +148,6 @@ En donde, la primera linea representa el numero de tablones de la finca y las si
 1. Coloque los archivos de los algoritmos implementados (Algoritmo_con_fuerza_bruta.py, Algoritmo_Dinamico.py, Algoritmo_voraz.py), el archivo Lector.py y las pruebas en formato .txt (prueba1.txt a prueba30.txt) en una misma carpeta
 2. Ejecute el archivo Lector.py desde la consola 
 
-Nota: Es necesario tener instalado el interpretador de python para la ejecucion de la aplicación
+Nota 1: Es necesario tener instalado el interpretador de python para la ejecucion de la aplicación
+Nota 2: Las soluciones se iran imprimiendo en la consola a medida que el script las genere
+Nota 3: El archivo txt con todas las soluciones se generara al final de la ejecucion de todo el script

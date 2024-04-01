@@ -4,7 +4,7 @@
 
 
 # Calculador de todas las posibles programaciones
-# O( n^(n+1) + n ) = O( n^(n+1) ) 
+# O( n^(n+1) + n ) = O( n^(n+1) ) | n=n
 def calculador_dtlpp(n):
     # O(n)
     indices = [[i] for i in range(n)]
@@ -69,9 +69,9 @@ def calculador_didtdr(programacion, finca):
 
 
 
-# Calculador de costo de riego
-# O(n) | n = len(inicios_de_tiempos_de_riego)
-def calculador_dcdr(inicios_de_tiempos_de_riego, finca):
+# Calculador de costo total de riego
+# O(n) | n = len(finca)
+def calculador_dctdr(inicios_de_tiempos_de_riego, finca):
     i = 0
     costo_total = 0
 
@@ -90,19 +90,19 @@ def calculador_dcdr(inicios_de_tiempos_de_riego, finca):
 
 
 # Respuesta obtenida Fuerza Bruta
-# O( n^(n+1) + n + (n+1!) ) = O( n^(n+1) )
+# O( n^(n+1) + n + (n+1!) ) = O( n^(n+1) ) | len(finca)
 def roFB(finca):
     n = len(finca)
     # O( n^(n+1) )
     programaciones_posibles = calculador_dtlpp(n)
     programacion_optima = programaciones_posibles[0]
     # O(2n) = O(n) | n = len(programacion_optima) = len(finca)
-    costo_optimo = calculador_dcdr(calculador_didtdr(programacion_optima, finca), finca)
+    costo_optimo = calculador_dctdr(calculador_didtdr(programacion_optima, finca), finca)
 
     # O( n!*(n+1) ) = O( (n+1)! ) | n! = len(programaciones_posibles)
     for programacion in programaciones_posibles:
-        # O(2n) = O(n) | n = len(programacion) = calculador_didtdr(programacion, finca)
-        posible_costo_optimo = calculador_dcdr(calculador_didtdr(programacion, finca), finca)
+        # O(2n) = O(n) | n = len(programacion) = len(finca)
+        posible_costo_optimo = calculador_dctdr(calculador_didtdr(programacion, finca), finca)
 
         # O(1)
         if (posible_costo_optimo < costo_optimo):
