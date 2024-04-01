@@ -1,7 +1,10 @@
-from itertools import permutations
+
+
+
+
 
 # Calculador de todas las posibles programaciones
-# O( n^(n+1) )
+# O( n^(n+1) + n ) = O( n^(n+1) ) 
 def calculador_dtlpp(n):
     # O(n)
     indices = [[i] for i in range(n)]
@@ -38,9 +41,9 @@ def calculador_dtlpp(n):
             return combinador_de_elementos(nuevo_vector_parcial, contador - 1)
 
     # O( n^(n+1) )
-    xd = combinador_de_elementos(indices, n-1)
+    programaciones_posibles = combinador_de_elementos(indices, n-1)
 
-    return xd
+    return programaciones_posibles
 
 
 
@@ -86,8 +89,8 @@ def calculador_dcdr(inicios_de_tiempos_de_riego, finca):
 
 
 
-# Calculador de solucion optima con fuerza bruta
-# O( n^(n+1) + n + (n!*n) + 1 + n) = O( n^(n+1) )
+# Respuesta obtenida Fuerza Bruta
+# O( n^(n+1) + n + (n+1!) ) = O( n^(n+1) )
 def roFB(finca):
     n = len(finca)
     # O( n^(n+1) )
@@ -96,7 +99,7 @@ def roFB(finca):
     # O(2n) = O(n) | n = len(programacion_optima) = len(finca)
     costo_optimo = calculador_dcdr(calculador_didtdr(programacion_optima, finca), finca)
 
-    # O(n!*n) | n! = len(programaciones_posibles)
+    # O( n!*(n+1) ) = O( (n+1)! ) | n! = len(programaciones_posibles)
     for programacion in programaciones_posibles:
         # O(2n) = O(n) | n = len(programacion) = calculador_didtdr(programacion, finca)
         posible_costo_optimo = calculador_dcdr(calculador_didtdr(programacion, finca), finca)
@@ -105,12 +108,5 @@ def roFB(finca):
         if (posible_costo_optimo < costo_optimo):
             programacion_optima = programacion
             costo_optimo = posible_costo_optimo
-        
-    # # O(1)
-    # print(costo_optimo)
-
-    # # O(n) | n = len(programacion_optima)
-    # for tablon in programacion_optima:
-    #     print(tablon)
 
     return ((programacion_optima, costo_optimo))

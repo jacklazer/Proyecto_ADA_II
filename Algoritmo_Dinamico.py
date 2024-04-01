@@ -1,4 +1,3 @@
-from itertools import permutations
 """
      Lee los datos de entrada desde un archivo y los devuelve como una tupla.
     
@@ -52,7 +51,7 @@ def cost(state, tablones, dp):
         
         if temp_cost + cost_i < min_cost:
             min_cost = temp_cost + cost_i
-            optimal_order = [state[i]] + temp_order
+            optimal_order = temp_order + [state[i]]
     
     dp[state] = (min_cost, optimal_order)
     return min_cost, optimal_order
@@ -84,47 +83,4 @@ def roPD(finca):
     dp = {}
     min_cost, optimal_order = cost(initial_state, finca, dp)
 
-    # # O(1)
-    # print(min_cost)
-
-    # # O(n) | n = len(optimal_order)
-    # for tablon in reversed(optimal_order):
-    #     print(tablon)
-
-    optimal_order.reverse()
-
     return (optimal_order, min_cost)
-
-
-
-
-
-# resultado = solucion_optima('prueba4.txt')
-# print(f"Tiempo óptimo de riego: {resultado[0]}")
-# print(f"Programación óptima de riego: {resultado[1]}")
-
-
-
-
-
-# print("========")
-
-# import Algoritmo_Fuerza_Bruta
-# finca_ = leer_archivo('prueba4.txt')
-
-# tiempos_de_riego = Algoritmo_Fuerza_Bruta.calculador_didtdr(resultado[1], finca_[1])
-# verificacion_de_costo = Algoritmo_Fuerza_Bruta.calculador_dcdr(tiempos_de_riego, finca_[1])
-# print(tiempos_de_riego, verificacion_de_costo)
-
-# print("========")
-
-# resultado_revertido = resultado[1][::-1]
-# tiempos_de_riego2 = Algoritmo_Fuerza_Bruta.calculador_didtdr(resultado_revertido, finca_[1])
-# verificacion_de_costo2 = Algoritmo_Fuerza_Bruta.calculador_dcdr(tiempos_de_riego2, finca_[1])
-# print(tiempos_de_riego2, verificacion_de_costo2)
-
-# print("========")
-
-# # resultado2 = solucion_optima('pruebaX.txt')
-# # print(f"Tiempo óptimo de riego: {resultado2[0]}")
-# # print(f"Programación óptima de riego: {resultado2[1]}")
