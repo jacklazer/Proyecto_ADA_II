@@ -21,23 +21,29 @@ def calculador_dtlpp(n):
 
     # k = contador | l = len(indices) | len(lista_parcial) = m
     # combinador_de_elementos realiza k llamados recursivos
-    # Antes de cada llamado recursivo se ejecuta un bucle doble de complejidad O( l*m ) | Este bucle doble se ejecuta k veces si k>=1
-    # En cada x-esima ejecucion del bucle doble m cambia
-    # Si m = l en la primera ejecucion del bucle doble entonces el valor de m esta dado por la funcion M(x) = {l si x = 1; M(x-1)*(l-1) si x > 1} | Esto se puede demostrar
-    # M(1) = l, M(2) = l*(l-1) = (l^2)-l, M(3) = ((l^2)-l)*(l-1) = (l^3)-(l^2)-(l^2)+l = (l^3)-(2*(l^2))+l, ..., M(x) = (l^x)+...+l | Esto se puede demostrar
-    # No es dificil convencerse de que M(x) siempre es un polinomio de grado x
-    # Por lo tanto la complejidad del bucle doble es de O( l*(l^x) ) = O( l^(x+1) ) para un x >= 1
+    # Antes de cada llamado recursivo se ejecuta un bucle doble (que llamaremos linea Z) de complejidad O( l*m ) | La linea Z se ejecuta k veces si k>=1
+    # En cada x-esima ejecucion de la linea Z, m cambia
+    # Si m = p en la primera ejecucion de la linea Z, entonces el valor de m esta dado por la funcion M(x) = {p si x = 1; (M(x-1)*l)-(M(x-1)*(x-1)) si x > 1} = {p si x = 1; M(x-1)*(l+1-x) si x > 1} | Esto se puede demostrar
+    # Si m = l en la primera ejecucion de la linea Z, entonces el valor de m esta dado por la funcion M(x) = {l si x = 1; M(x-1)*(l+1-x) si x > 1}
+    # M(1) = l
+    # M(2) = l*(l+1-2) = (l^2)-l
+    # M(3) = ((l^2)-l)*(l+1-3) = ((l^2)-l)*(l-2) = (l^3)-(l^2)-(2*(l^2))+(2*l) = (l^3)-(3*(l^2))+(2*l)
+    # M(4) = ((l^3)-(3*(l^2))+(2*l))*(l+1-4) = ((l^3)-(3*(l^2))+(2*l))*(l-3) = (l^4)-(3*(l^3))+(2*(l^2))-(3*(l^3))+(9*(l^2))-(6*l) = (l^4)-(6*(l^3))+(11*(l^2))-(6*l)
+    # ...
+    # M(x) = ((l^(x-1))+...+(a*l))*(l+1-x) = (l^x)+...+(a*(l^2)) + ((l^(x-1))+...+(a*l)) - (((l^(x-1))+...+(a*l))*x)  | Esto se puede demostrar
+    # No es dificil convencerse de que M(x) siempre es un polinomio de grado x si  1 =< x < l
+    # Por lo tanto la complejidad de la linea Z es de O( l*(l^x) ) = O( l^(x+1) ) para un 1 =< x < l
     # Por lo tanto la complejidad de combinador_de_elementos es de O( (l^(k+1)) + (l^k) + ... + (l^3) + (l^2) ) = O( l^(k+1) ) si no se tiene en cuenta la complejidad de identificador_de_elemento
-    # len(i) = p (variable)
-    # En cada x-esima ejecucion del bucle doble p cambia e identificador_de_elemento se ejecuta M(x) veces
-    # El valor de p esta dado por la funcion P(x) = x si x >= 1 | Esto se puede demostrar
+    # len(i) = q (variable)
+    # El valor de q esta dado por la funcion Q(x) = x si x >= 1 | Esto se puede demostrar
+    # En cada x-esima ejecucion de la linea z, q cambia e identificador_de_elemento se ejecuta Q(x) veces | identificador_de_elemento es de complejidad O(x)
     # Por lo tanto la complejidad de combinador_de_elementos es de O( (l^(k+1))*k + (l^k)*(k-1) + ... + (l^3)*2 + (l^2)*1 ) = O( (l^(k+1))*k ) si se tiene en cuenta la complejidad de identificador_de_elemento
-    # Si contador = n-1, len(indices) = n, len(lista_parcial) = n entonces la complejidad de combinador_de_elementos es de O( (n^n)*(n-1) ) = O( (n^(n+1))-(n^n) ) = O( n^(n+1) )
+    # Si contador = k = n-1, len(indices) = l = n, len(lista_parcial) = m = n entonces la complejidad de combinador_de_elementos es de O( (n^n)*(n-1) ) = O( (n^(n+1))-(n^n) ) = O( n^(n+1) )
     def combinador_de_elementos(lista_parcial, contador):
         if contador == 0:
             return lista_parcial
         else:
-            nuevo_vector_parcial = [i + j for i in lista_parcial for j in indices if (identificador_de_elemento(j[0], i)==False)]
+            nuevo_vector_parcial = [i + j for i in lista_parcial for j in indices if (identificador_de_elemento(j[0], i)==False)] # Linea Z
             return combinador_de_elementos(nuevo_vector_parcial, contador - 1)
 
     # O( n^(n+1) )
