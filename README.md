@@ -88,9 +88,60 @@ Por ultimo, la función retorna una tupla que contiene la programación óptima 
 
 En este archivo se encuentra la implementación propuesta del algoritmo de programación dinamica para resolver el problema de optimización de la programación de riego en una finca en cuestion. 
 
+Para ello, se implementó las siguientes 4 funciones:
 
+```python
+def leer_archivo(nombre_archivo):
+    with open(nombre_archivo, 'r') as archivo:
+        lineas = archivo.readlines()
+        n = int(lineas[0].strip())
+        tablones = []
+        for linea in lineas[1:]:
+            ts, tr, p = map(int, linea.strip().split(','))
+            tablones.append((ts, tr, p))
+        return n, tablones
+```
 
+La función `leer_archivo()` tiene la tarea de leer los datos de entrada desde un archivo y devolver el numero `n` de tablones, que se encuentra en la primer linea del archivo de texto, y una lista de tuplas `tablones` correspondientes a los tablones con su respectivo tiempo de supervivencia, tiempo de riego y prioridad.
 
+```python
+
+def cost(state, tablones, dp):
+    if not state:
+        return 0, []
+
+    if state in dp:
+        return dp[state]
+...
+```
+
+La función `cost()` se trata de una función recursiva que calcula el costo mínimo y la programación óptima de riego para un estado dado.
+para ello, toma una tupla de índices de tablones `state`, una lista de tuplas que representan los tablones `tablones`, y un diccionario para almacenar los resultados ya calculados `dp` como argumentos, utilizando la tecnica de memoization y evitando los recalculos.
+En cada iteración se elimina un tablón y se calcula el costo de regar el tablón actual en función de los tablones ya regados, actualizando el costo mínimo y la programación óptima si se encuentra una solución mejor.
+
+```python
+def solucion_optima(nombre_archivo):
+    n, tablones = leer_archivo(nombre_archivo)
+    initial_state = tuple(range(n))
+    dp = {}
+    min_cost, optimal_order = cost(initial_state, tablones, dp)
+    return min_cost, optimal_order
+```
+
+`solucion_optima()` es la función principal y que se encarga de resolver el problema de optimización del riego de los tablones, utilizando funciones implementadas.
+La función utiliza `leer_archivo()` para obtener el número de tablones y la información de los tablones desde el archivo especificado, luego inicializa el estado inicial como una tupla que contiene todos los índices de tablones y por ultimo utiliza `cost` para calcular el costo mínimo y la programación óptima de riego, retornando el costo mínimo y la programación óptima.
+
+```python
+def roPD(finca):
+    n = len(finca)
+    initial_state = tuple(range(n))
+    dp = {}
+    min_cost, optimal_order = cost(initial_state, finca, dp)
+
+    return (optimal_order, min_cost)
+```
+
+La función `roPD `toma una lista de tablones `finca` como entrada y se encarga de devolver la programación óptima de riego y su costo asociado. para ello inicializa el estado inicial  `initial_state` y el diccionario `dp` y calcula la programación óptima de riego utilizando la función `cost`.
 
 
 
