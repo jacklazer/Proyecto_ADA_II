@@ -51,4 +51,4 @@ def roV(nombre_archivo):
     programacion_optima = calculador_dpo(costos_de_ultimo_riego, programacion_optima_, finca, n)
     return (programacion_optima, Algoritmo_Fuerza_Bruta.calculador_dctdr(Algoritmo_Fuerza_Bruta.calculador_didtdr(programacion_optima, finca), finca))
 
-print(roV("Prueba30.txt"))
+print(roV("Prueba1.txt"))
