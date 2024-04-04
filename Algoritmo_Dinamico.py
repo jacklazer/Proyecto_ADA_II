@@ -30,7 +30,7 @@ def leer_archivo(nombre_archivo):
     Retorna:
     min_cost (float): Costo mínimo para regar los tablones en el estado dado.
     optimal_order (list): Lista de índices que representa la programación óptima de riego.
-    Complejidad: O(n * 2^n), donde n es el número de tablones
+    Complejidad: O(n^2), donde n es el número de tablones
 """
 def cost(state, tablones, dp):
     if not state:
@@ -66,9 +66,9 @@ def cost(state, tablones, dp):
     min_cost (float): Costo mínimo para regar todos los tablones.
     optimal_order (list): Lista de índices que representa la programación óptima de riego.
 
-    # Código para leer los datos de entrada
-    # Llamada a la función cost con el estado inicial
-    # Complejidad: O(n * 2^n), donde n es el número de tablones
+    Código para leer los datos de entrada
+    Llamada a la función cost con el estado inicial
+    Complejidad: O(n^2), donde n es el número de tablones
 """
 def solucion_optima(nombre_archivo):
     n, tablones = leer_archivo(nombre_archivo)
