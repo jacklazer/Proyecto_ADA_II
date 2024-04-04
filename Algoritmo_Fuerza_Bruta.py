@@ -12,15 +12,13 @@ def calculador_dtlpp(n):
     # k = len(lista)
     # O(k)
     def identificador_de_elemento(elemento, lista):
-        verdaderos_y_falsos = [(elemento == e) for e in lista]
-
-        for booleano in verdaderos_y_falsos:
-            if booleano:
+        for e in lista:
+            if (e == elemento):
                 return True
         return False
 
     # k = contador | l = len(indices) | len(lista_parcial) = m
-    # combinador_de_elementos realiza k llamados recursivos
+    # combinador_de_elementos realiza k llamados recursivos | Esto se puede demostrar
     # Antes de cada llamado recursivo se ejecuta un bucle doble (que llamaremos linea Z) de complejidad O( l*m ) | La linea Z se ejecuta k veces si k>=1
     # En cada x-esima ejecucion de la linea Z, m cambia
     # Si m = p en la primera ejecucion de la linea Z, entonces el valor de m esta dado por la funcion M(x) = {p si x = 1; (M(x-1)*l)-(M(x-1)*(x-1)) si x > 1} = {p si x = 1; M(x-1)*(l+1-x) si x > 1} | Esto se puede demostrar
@@ -43,8 +41,8 @@ def calculador_dtlpp(n):
         if contador == 0:
             return lista_parcial
         else:
-            nuevo_vector_parcial = [i + j for i in lista_parcial for j in indices if (identificador_de_elemento(j[0], i)==False)] # Linea Z
-            return combinador_de_elementos(nuevo_vector_parcial, contador - 1)
+            nueva_lista_parcial = [i + j for i in lista_parcial for j in indices if (identificador_de_elemento(j[0], i)==False)] # Linea Z
+            return combinador_de_elementos(nueva_lista_parcial, contador - 1)
 
     # O( n^(n+1) )
     programaciones_posibles = combinador_de_elementos(indices, n-1)
@@ -115,4 +113,4 @@ def roFB(finca):
             programacion_optima = programacion
             costo_optimo = posible_costo_optimo
 
-    return ((programacion_optima, costo_optimo))
+    return (programacion_optima, costo_optimo)
