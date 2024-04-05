@@ -266,6 +266,10 @@ En donde, la primera linea representa el numero de tablones de la finca y las si
 1. Coloque los archivos de los algoritmos implementados (Algoritmo_con_fuerza_bruta.py, Algoritmo_Dinamico.py, Algoritmo_voraz.py), el archivo Lector.py y las pruebas en formato .txt (prueba1.txt a prueba30.txt) en una misma carpeta
 2. Ejecute el archivo Lector.py desde la consola 
 
-Nota 1: Es necesario tener instalado el interpretador de python para la ejecucion de la aplicación
-Nota 2: Las soluciones se iran imprimiendo en la consola a medida que el script las genere
-Nota 3: El archivo txt con todas las soluciones se generara al final de la ejecucion de todo el script
+Nota 1: Es necesario tener instalado el interpretador de python para la ejecucion de la aplicación.
+Nota 2: Las soluciones se iran imprimiendo en la consola a medida que el script las genere.
+Nota 3: El archivo txt con todas las soluciones se generara al final de la ejecucion de todo el script.
+Nota 4: Los archivos .txt que seran retornados con las respuestas seran:
+-Soluciones_Fuerza_Bruta.txt
+-Soluciones_Programacion_Dinamica.txt
+-Soluciones_Programacion_Voraz.txt
