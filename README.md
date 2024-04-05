@@ -264,7 +264,9 @@ En donde, la primera linea representa el numero de tablones de la finca y las si
 
 ## Instrucciones para la ejecución de la aplicación
 1. Coloque los archivos de los algoritmos implementados (Algoritmo_con_fuerza_bruta.py, Algoritmo_Dinamico.py, Algoritmo_voraz.py), el archivo Lector.py y las pruebas en formato .txt (prueba1.txt a prueba30.txt) en una misma carpeta
-2. Ejecute el archivo Lector.py desde la consola 
+2. Ejecute el archivo Lector.py desde la consola
+3.Elige (escribiendo el número  entero sugerido) el algoritmo a ejecutar.
+4.Elige entre ejecutar todas las pruebas o elegir una prueba en específico.
 
 Nota 1: Es necesario tener instalado el interpretador de python para la ejecucion de la aplicación.
 
