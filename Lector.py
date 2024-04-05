@@ -7,7 +7,7 @@ import Algoritmo_Voraz
 
 
 # archivos_txt_ordenados = ['PruebaX.txt']
-# archivos_txt_ordenados = ['Prueba1.txt', 'Prueba2.txt', 'Prueba3.txt', 'Prueba4.txt', 'Prueba5.txt', 'Prueba6.txt', 'Prueba7.txt', 'Prueba8.txt', 'Prueba9.txt', 'Prueba10.txt']
+# archivos_txt_ordenados = ['Prueba_Ejemplo1.txt', 'Prueba_Ejemplo2.txt', 'Prueba_Ejemplo3.txt', 'Prueba_Ejemplo4.txt', 'Prueba_Ejemplo5.txt']
 archivos_txt_ordenados = ['Prueba1.txt', 'Prueba2.txt', 'Prueba3.txt', 'Prueba4.txt', 'Prueba5.txt', 'Prueba6.txt', 'Prueba7.txt', 'Prueba8.txt', 'Prueba9.txt', 'Prueba10.txt', 
                            'Prueba11.txt', 'Prueba12.txt', 'Prueba13.txt', 'Prueba14.txt', 'Prueba15.txt', 'Prueba16.txt', 'Prueba17.txt', 'Prueba18.txt', 'Prueba19.txt', 'Prueba20.txt', 
                            'Prueba21.txt', 'Prueba22.txt', 'Prueba23.txt', 'Prueba24.txt', 'Prueba25.txt', 'Prueba26.txt', 'Prueba27.txt', 'Prueba28.txt', 'Prueba29.txt', 'Prueba30.txt']
