@@ -147,7 +147,74 @@ La función `roPD `toma una lista de tablones `finca` como entrada y se encarga 
 
 ### Algoritmo_voraz.py
 
-En este archivo se encuentra la implementación propuesta del algoritmo de programación voraz para resolver el problema de optimización de la programación de riego en una finca en cuestion. 
+En Algoritmo_Voraz.py se encuentra implementado la propuesta de algoritmo con enfoque voraz que como grupo desarrollamos para dar solución al problema de riego óptimo. 
+En nuestra propuesta de algoritmo voraz, hicimos uso del algoritmo de fuerza bruta que ya se había implementado con anterioridad, para acceder a algunas funciones que son necesarias para el cálculo del costo total de riego en el algoritmo voraz.
+
+```python
+def calculador_dcdur(tablon, tiempo_total_de_regado):
+    costo = tablon[2] * (tiempo_total_de_regado - tablon[0])
+    return costo
+```
+La función `calculador_dcdur` calcula el costo de riego de un `tablon` en función del tiempo total de riego en la finca, esto lo realiza con un cálculo simple basado en operaciones aritméticas y no depende del tamaño de la entrada, obteniendo una complejidad constante.
+
+```python
+def verificador_dpmg(a, b, finca):
+    if (finca[a][2] >= finca[b][2]):
+        return a
+    elif (finca[b][2] > finca[a][2]):
+        return b
+```
+
+La función `verificador_dpmg` verifica cuál, entre dos `tablones`, tiene una prioridad más alta, basándose en sus prioridades, esto lo hace realizando una comparación simple, obteniendo una complejidad constante.
+
+```python
+def calculador_dpo(costos_de_ultimo_riego, programacion_optima, finca, n):
+    
+    tablon_actual = 0
+    costo_mas_costoso = 0
+    tablon_mas_costoso = -1
+
+    
+    for costo_de_ultimo_riego in costos_de_ultimo_riego:
+        if not(tablon_actual in programacion_optima):
+            if (costo_de_ultimo_riego > costo_mas_costoso):
+                costo_mas_costoso = costo_de_ultimo_riego
+                tablon_mas_costoso = tablon_actual
+            elif (costo_de_ultimo_riego == costo_mas_costoso):
+                tablon_mas_costoso = verificador_dpmg(tablon_actual, tablon_mas_costoso, finca)
+                costo_mas_costoso = costos_de_ultimo_riego[tablon_mas_costoso]
+        tablon_actual += 1
+    programacion_optima.append(tablon_mas_costoso)
+
+   
+    if (len(programacion_optima) == n):
+        return programacion_optima
+    else:
+        return calculador_dpo(costos_de_ultimo_riego, programacion_optima, finca, n)
+```
+La función `calculador_dpo` calcula la programación óptima de riego utilizando el enfoque voraz. Su complejidad dominante está en el bucle que recorre la lista de costos de último riego, que tiene una complejidad lineal `O(n)`, donde `n` es la cantidad de `tablones` en la finca. El resto de sus componentes tienen una complejidad menos dominante, por lo tanto no se tienen en cuenta.
+
+```python
+def roV(finca):
+    n = len(finca)
+    tiempo_total_de_regado = 0
+    costos_de_ultimo_riego = []
+
+    for tablon in finca:
+        tiempo_total_de_regado += tablon[1]
+
+    for tablon in finca:
+        costos_de_ultimo_riego.append(calculador_dcdur(tablon, tiempo_total_de_regado))
+
+    programacion_optima_ = []
+
+    programacion_optima = calculador_dpo(costos_de_ultimo_riego, programacion_optima_, finca, n)
+
+    return (programacion_optima, Algoritmo_Fuerza_Bruta.calculador_dctdr(Algoritmo_Fuerza_Bruta.calculador_didtdr(programacion_optima, finca), finca))
+```
+
+La función principal es `roV`, la cual ejecuta el algoritmo voraz para resolver el problema. 
+Esta función llama a las otras funciones ya mencionadas en el mismo módulo, dominando la complejidad de la función `calculador_dpo →  O(n) `
 
 ### Lector.py
 
