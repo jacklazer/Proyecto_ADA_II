@@ -241,7 +241,7 @@ Si el usuario elige la opción 2 (programación dinámica) o a opcion 3 (program
 
 
 
-### pruebas en formato .txt
+### Pruebas en formato .txt
 
 Se entrega un conjunto de archivos de texto que representan una serie de pruebas con las que se van a ejecutar los algoritmos implementados una vez ejecutada la aplicación y elegido el algoritmo a utilizar. 
 
@@ -267,9 +267,12 @@ En donde, la primera linea representa el numero de tablones de la finca y las si
 2. Ejecute el archivo Lector.py desde la consola 
 
 Nota 1: Es necesario tener instalado el interpretador de python para la ejecucion de la aplicación.
+
 Nota 2: Las soluciones se iran imprimiendo en la consola a medida que el script las genere.
+
 Nota 3: El archivo txt con todas las soluciones se generara al final de la ejecucion de todo el script.
+
 Nota 4: Los archivos .txt que seran retornados con las respuestas seran:
--Soluciones_Fuerza_Bruta.txt
--Soluciones_Programacion_Dinamica.txt
--Soluciones_Programacion_Voraz.txt
+- Soluciones_Fuerza_Bruta.txt
+- Soluciones_Programacion_Dinamica.txt
+- Soluciones_Programacion_Voraz.txt
